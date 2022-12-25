@@ -1,0 +1,27 @@
+name: FsHelpers
+on:
+  push:
+    branches:
+      - '*'
+      - '!main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name : Checkout source
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          global-json-file: 'global.json'
+
+      - name: Build with dotnet
+        run: dotnet build src/app
+
+      - name: Run tests
+        run: dotnet test test/unit --no-build
+        
