@@ -5,5 +5,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CollectionHelpers.fs" />
+    <Compile Include="StringHelpers.fs" />
   </ItemGroup>
 </Project>

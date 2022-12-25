@@ -3,10 +3,10 @@ namespace CorvusCorax.FsHelpers.UnitTests
 open System
 open Xunit
 
+open CorvusCorax.FsHelpers
 
 
 module ``CollectionHelpers`` =
-    open CorvusCorax.FsHelpers.CollectionHelpers
     
     [<Fact>]
     let ``minMaxBy gets both min and max`` () =
