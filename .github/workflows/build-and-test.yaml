@@ -1,9 +1,8 @@
 name: FsHelpers
 on:
   push:
-    branches:
-      - '*'
-      - '!main'
+    branches-ignore: 
+      - main
 
 jobs:
   build:
@@ -20,8 +19,8 @@ jobs:
           global-json-file: 'global.json'
 
       - name: Build with dotnet
-        run: dotnet build src/app
+        run: dotnet build
 
       - name: Run tests
-        run: dotnet test test/unit --no-build
+        run: dotnet test --no-build
         
