@@ -7,6 +7,12 @@
       "commands": [
         "dotnet-outdated"
       ]
+    },
+    "fantomas": {
+      "version": "5.1.5",
+      "commands": [
+        "fantomas"
+      ]
     }
   }
 }
