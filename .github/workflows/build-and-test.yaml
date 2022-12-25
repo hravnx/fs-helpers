@@ -2,6 +2,7 @@ name: FsHelpers
 on:
   push:
     branches:
+      - '*'
       - '!main'
 
 jobs:
@@ -23,4 +24,4 @@ jobs:
 
       - name: Run tests
         run: dotnet test test/unit --no-build
-
+        
