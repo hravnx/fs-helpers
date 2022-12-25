@@ -1,4 +1,4 @@
-namespace CorvusCorax.FsHelpers.CollectionHelpers
+namespace CorvusCorax.FsHelpers
 
 [<RequireQualifiedAccess>]
 module Seq =
@@ -7,6 +7,7 @@ module Seq =
 
         if not (e.MoveNext()) then
             invalidArg (nameof items) "Empty sequence"
+
         let firstItem = e.Current
         let mutable minUntilNow = firstItem
         let mutable maxUntilNow = firstItem
@@ -26,5 +27,3 @@ module Seq =
                 pMax <- pItem
 
         (minUntilNow, maxUntilNow)
-
-
