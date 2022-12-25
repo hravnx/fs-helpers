@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E20CB5F9-0A2
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CorvusCorax.FsHelpers", "src\lib\CorvusCorax.FsHelpers.fsproj", "{1C7CF063-73EF-4BF6-BCBE-F4E993E9C32B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1B199397-CC75-447F-883A-C14593F90482}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CorvusCorax.FsHelpers.UnitTests", "test\unit\CorvusCorax.FsHelpers.UnitTests.fsproj", "{9B35CA1E-696D-449D-B404-133A97A933BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +24,13 @@ Global
 		{1C7CF063-73EF-4BF6-BCBE-F4E993E9C32B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C7CF063-73EF-4BF6-BCBE-F4E993E9C32B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C7CF063-73EF-4BF6-BCBE-F4E993E9C32B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B35CA1E-696D-449D-B404-133A97A933BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B35CA1E-696D-449D-B404-133A97A933BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B35CA1E-696D-449D-B404-133A97A933BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B35CA1E-696D-449D-B404-133A97A933BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1C7CF063-73EF-4BF6-BCBE-F4E993E9C32B} = {E20CB5F9-0A2B-4EA7-A8CD-FBCAD720BA8A}
+		{9B35CA1E-696D-449D-B404-133A97A933BB} = {1B199397-CC75-447F-883A-C14593F90482}
 	EndGlobalSection
 EndGlobal
