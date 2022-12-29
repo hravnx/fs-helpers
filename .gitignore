@@ -1,3 +1,10 @@
 bin/
 obj/
+.nuget/
+
+*.nupkg
+*.snupkg
+
+BenchmarkDotnet.Artifacts/
+
 
