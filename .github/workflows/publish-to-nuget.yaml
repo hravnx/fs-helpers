@@ -1,0 +1,38 @@
+name: FsHelpers Publish to Nuget
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name : Checkout source
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          global-json-file: 'global.json'
+
+      - name: Build with dotnet
+        run: dotnet build -c Release
+
+      - name: Run tests
+        run: dotnet test --no-build -c Release
+        
+      - name: Create nuget package
+        run: dotnet pack src/lib --no-build --include-symbols --include-source  -o ./.nuget -c Release
+
+      - name: Upload package to Nuget
+        run: 'dotnet nuget push "./.nuget/*.nupkg" -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json'
+        
+      - name: Upload symbol package to Nuget
+        run: 'dotnet nuget push "./.nuget/*.snupkg" -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json'
+        
