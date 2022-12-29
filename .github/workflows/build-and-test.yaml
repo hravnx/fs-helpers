@@ -1,4 +1,4 @@
-name: FsHelpers
+name: FsHelpers build and test
 on:
   push:
     branches-ignore: 

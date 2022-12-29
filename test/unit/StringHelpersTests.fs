@@ -8,7 +8,8 @@ module ``String helpers`` =
     
     [<Fact>]
     let ``firstCharIs test the first char`` () =
-        Assert.True(String.firstCharIs 'X' "XYZ")
+        let result = String.firstCharIs 'X' "XYZ"
+        Assert.True(result)
         Assert.False(String.firstCharIs 'Y' "XYZ")
         Assert.False(String.firstCharIs 'Z' "")
         Assert.False(String.firstCharIs 'Z' null)
