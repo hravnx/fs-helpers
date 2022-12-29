@@ -1,9 +1,12 @@
 name: FsHelpers Publish to Nuget
 on:
-  push: [main]
-  pull-request: [main]
-  
-
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+    
 jobs:
   build:
     runs-on: ubuntu-latest
