@@ -6,10 +6,11 @@
     <PackageId>CorvusCorax.FsHelpers</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IncludeSymbols>true</IncludeSymbols>
+    <PackgeReadmeFile>README.md</PackgeReadmeFile>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Version>0.1.0-wip</Version>
+    <Version>0.1.1-wip</Version>
     <Authors>Henrik Ravn</Authors>
-    <Description>A small collection of the types and functions that I find myself writing over and over agin for almost every new F# project.</Description>
+    <Description>A small collection of the types and functions that I find myself writing over and over again for almost every new F# project.</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -18,8 +19,10 @@
   <ItemGroup>
     <Compile Include="CollectionHelpers.fs" />
     <Compile Include="StringHelpers.fs" />
+    <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
