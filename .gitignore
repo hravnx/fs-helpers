@@ -7,4 +7,6 @@ obj/
 
 BenchmarkDotnet.Artifacts/
 
+.DS_Store
+
 
