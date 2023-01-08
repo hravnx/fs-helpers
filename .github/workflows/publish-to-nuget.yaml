@@ -5,7 +5,7 @@ on:
       - 'v**'
 env:
   PKG_NAME: CorvusCorax.FsHelpers
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
