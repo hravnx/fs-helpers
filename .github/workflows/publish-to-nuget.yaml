@@ -1,8 +1,10 @@
 name: FsHelpers Publish to Nuget
 on:
   push:
-    branches:
-      - 'main'
+    tags:
+      - 'v**'
+env:
+  PKG_NAME: CorvusCorax.FsHelpers
     
 jobs:
   build:
@@ -10,26 +12,27 @@ jobs:
     steps:
       - name : Checkout source
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v3
         with:
           global-json-file: 'global.json'
 
+      - name: Set NUGET_VERSION variable from tag
+        run: echo "NUGET_VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+        
       - name: Build with dotnet
-        run: dotnet build -c Release
+        run: dotnet build -c Release /p:Version=${NUGET_VERSION}
 
       - name: Run tests
         run: dotnet test --no-build -c Release
         
       - name: Create nuget package
-        run: dotnet pack src/lib --no-build --include-symbols --include-source  -o ./.nuget -c Release
+        run: dotnet pack src/lib --no-build -o ./.nuget -c Release  /p:Version=${NUGET_VERSION}
 
       - name: Upload package to Nuget
-        run: 'dotnet nuget push "./.nuget/*.nupkg" -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json'
+        run: 'dotnet nuget push "./.nuget/CorvusCorax.FsHelpers.${NUGET_VERSION}.nupkg" -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json'
         
       - name: Upload symbol package to Nuget
-        run: 'dotnet nuget push "./.nuget/*.snupkg" -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json'
+        run: 'dotnet nuget push "./.nuget/CorvusCorax.FsHelpers.${NUGET_VERSION}.snupkg" -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json'
         

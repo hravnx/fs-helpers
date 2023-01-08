@@ -1,12 +1,15 @@
 namespace CorvusCorax.FsHelpers
 
+open System.Collections.Generic
+
 [<RequireQualifiedAccess>]
-module Seq =
-    let minMaxBy (projection: 'a -> 'b) (items: 'a seq) =
-        let e = items.GetEnumerator()
+module Enumerator =
+    let minMaxBy (projection: 'a -> 'b) (e: IEnumerator<'a>) =
+        if isNull e then
+            nullArg (nameof e)
 
         if not (e.MoveNext()) then
-            invalidArg (nameof items) "Empty sequence"
+            invalidArg (nameof e) "Empty sequence"
 
         let firstItem = e.Current
         let mutable minUntilNow = firstItem
@@ -22,8 +25,16 @@ module Seq =
                 minUntilNow <- item
                 pMin <- pItem
 
-            if pItem > pMax then
+            if pMax < pItem then
                 maxUntilNow <- item
                 pMax <- pItem
 
         (minUntilNow, maxUntilNow)
+
+
+[<RequireQualifiedAccess>]
+module Seq =
+    /// 
+    let minMaxBy (projection: 'a -> 'b) (items: 'a seq) =
+        let e = items.GetEnumerator()
+        Enumerator.minMaxBy projection e
